@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+\usepackage{makeidx}
+\usepackage[hyperindex]{hyperref}
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+\makeindex % Initializes the index
+
+\renewcommand{\indexname}{Índice} % Rename the index
+
+\let\oldindex\index % Save the original \index command
+\renewcommand{\index}[1]{\oldindex{#1|vspace{10pt}}} % Redefine \index to add extra space beteween each entry
+
+\begin{document}
+
+\title{\textbf{Modelos y Optimización 1} \\ \large \textbf{Trabajo Práctico 1}}
+\author{\begin{tabular}{p{0.3\textwidth}p{0.3\textwidth}p{0.3\textwidth}}
+    Bilbao, Manuel & Locatelli, Santiago & Rolando, Marcos \\
+    XXXXXX & XXXXXX & 102323 \\
+    \end{tabular}}
+\date{Abril 9, 2023}
+
+\maketitle % Prints the title, author, and date
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{fiuba.png}
+    \label{fig:image}
+\end{figure}
+
+\printindex
+
+\section{Análisis de la situación}
+\index{1@Análisis de la situación}
+
+El enunciado nos plantea una situación en la que hay dos tipos
+de equipos diferentes, de Combate y Apoyo, cada uno de ellos
+compuesto por ciertos elementos en cantidades espceficadas.
+También nos establece una relación entre los tipos de equipos.
+Por cada dos equipos de Combate debe haber \textbf{al menos 
+un equipo de Apoyo.}
+
+Por cada equipo armado se obtienen ciertos puntos de mejora.
+El equipo de Combate otorga 10 puntos mientras que el equipo
+de Apoyo otorga 8 puntos.
+
+En base a lo planteado por el enunciado, lo mejor que puede
+hacer el Ministerio es obtener la mayor cantidad de puntos posibles
+dada la cantidad de elementos disponbiles en el enunciado, por
+lo que estamos frente a un problema de \textbf{maximización}.
+
+\section{Objetivo}
+\index{2@Objetivo}
+
+Determinar la cantidad de equipos de Combate del Fuegoy Apoyo
+Logístico a conformar por el Ministerio para maximizar la eficacia
+del plan durante la próxima temporada.
+
+\section{Hipótesis y supuestos}
+\index{3@Hipótesis y supuestos}
+
+% bullet list
+\begin{itemize}
+\item Las máquinas y vehículos no se rompen.
+\item Los empleados no se ausentan.
+\item Los equipos de combate de fuego son indistinguibles entre sí.
+\item Los equipos de apoyo logístico son indistinguibles entre sí.
+\item Cualquier combinación de equipos aporta los mismos puntos de mejora.
+\item No existen causas que hagan que los equipos no tengan la mejora mencionada en el enunciado.
+\item Un equipo debe estar completamente integrado por los elementos correspondientes para mejorar la eficacia del plan.
+\end{itemize}
+
+\section{Modelo}
+\index{4@Modelo}
+
+\subsection{Variables}
+\index{4@Modelo!1@Variables}
+
+Este problema puede modelarse mediante las siguientes dos variables
+
+\begin{itemize}
+\item $C$: Cantidad de equipos de Combate de Fuego a conformar en la temporada. \textbf{[C]}: $\frac{equipos}{temporada}$
+\item $A$: Cantidad de equipos de Apoyo Logístico a conformar en la temporada. \textbf{[A]}: $\frac{equipos}{temporada}$
+\end{itemize}
+
+\subsection{Funcional}
+\index{4@Modelo!2@Funcional}
+
+El funcional planteado para el modelo es el siguiente
+
+$$Max Z = 10\frac{puntos}{equipo} \cdot C + 8\frac{puntos}{equipo} \cdot A$$
+
+\subsection{Restricciones}
+\index{4@Modelo!3@Restricciones}
+
+A continuación se enumeran las restricciones correspondientes al modelo
+
+\begin{enumerate}[label=(\textbf{\arabic*})]
+    \item $2 \cdot A \geq C$
+    \item $2 \frac{autobombas}{equipo} \cdot C \leq 16 \frac{autobombas}{temporada}$
+    \item $1 \frac{helic\acute{o}pteros}{equipo} \cdot A \leq 8 \frac{helic\acute{o}pteros}{temporada}$
+    \item $2 \frac{brigadas}{equipo} \cdot C + 1 \frac{brigadas}{equipo} \cdot A \leq 28 \frac{brigadas}{temporada}$
+    \item $1 \frac{drones}{equipo} \cdot C + 2 \frac{drones}{equipo} \cdot A \leq 24 \frac{drones}{temporada}$
+\end{enumerate}
+
+\end{document}
