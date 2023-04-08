@@ -3,6 +3,7 @@
 \usepackage[hyperindex]{hyperref}
 \usepackage{graphicx}
 \usepackage{enumitem}
+\usepackage{verbatim}
 
 \makeindex % Initializes the index
 
@@ -102,5 +103,19 @@ A continuación se enumeran las restricciones correspondientes al modelo
     \item $2 \frac{brigadas}{equipo} \cdot C + 1 \frac{brigadas}{equipo} \cdot A \leq 28 \frac{brigadas}{temporada}$
     \item $1 \frac{drones}{equipo} \cdot C + 2 \frac{drones}{equipo} \cdot A \leq 24 \frac{drones}{temporada}$
 \end{enumerate}
+
+\pagebreak
+\section{Resolución}
+\index{5@Resolución}
+
+\subsection{Modelo de GLPK}
+\index{5@Resolución!1@Modelo de GLPK}
+
+\verbatiminput{src/resolucion.mod}
+
+\subsection{Solución obtenida}
+\index{5@Resolución!2@Solución obtenida}
+
+\verbatiminput{src/resolucion.sol}
 
 \end{document}
