@@ -1,16 +1,11 @@
 \documentclass[12pt]{article}
-\usepackage{makeidx}
+\usepackage[spanish]{babel}
 \usepackage[hyperindex]{hyperref}
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{verbatim}
 
-\makeindex % Initializes the index
-
-\renewcommand{\indexname}{Índice} % Rename the index
-
-\let\oldindex\index % Save the original \index command
-\renewcommand{\index}[1]{\oldindex{#1|vspace{10pt}}} % Redefine \index to add extra space beteween each entry
+\addto\captionsspanish{\renewcommand{\contentsname}{Tabla de Contenidos}}
 
 \begin{document}
 
@@ -29,10 +24,12 @@
     \label{fig:image}
 \end{figure}
 
-\printindex
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+\newpage
 
 \section{Análisis de la situación}
-\index{1@Análisis de la situación}
 
 El enunciado nos plantea una situación en la que hay dos tipos
 de equipos diferentes, de Combate y Apoyo, cada uno de ellos
@@ -51,14 +48,12 @@ dada la cantidad de elementos disponbiles en el enunciado, por
 lo que estamos frente a un problema de \textbf{maximización}.
 
 \section{Objetivo}
-\index{2@Objetivo}
 
 Determinar la cantidad de equipos de Combate del Fuego y Apoyo
 Logístico a conformar por el Ministerio para maximizar la eficacia
 del plan durante la próxima temporada.
 
 \section{Hipótesis y supuestos}
-\index{3@Hipótesis y supuestos}
 
 % bullet list
 \begin{itemize}
@@ -72,10 +67,8 @@ del plan durante la próxima temporada.
 \end{itemize}
 
 \section{Modelo}
-\index{4@Modelo}
 
 \subsection{Variables}
-\index{4@Modelo!1@Variables}
 
 Este problema puede modelarse mediante las siguientes dos variables
 
@@ -85,14 +78,12 @@ Este problema puede modelarse mediante las siguientes dos variables
 \end{itemize}
 
 \subsection{Funcional}
-\index{4@Modelo!2@Funcional}
 
 El funcional planteado para el modelo es el siguiente
 
 $$Max Z = 10\frac{puntos}{equipo} \cdot C + 8\frac{puntos}{equipo} \cdot A$$
 
 \subsection{Restricciones}
-\index{4@Modelo!3@Restricciones}
 
 A continuación se enumeran las restricciones correspondientes al modelo
 
