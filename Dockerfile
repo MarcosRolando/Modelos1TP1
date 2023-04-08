@@ -1,21 +1,24 @@
-FROM texlive/texlive:latest
+FROM texlive/texlive:latest-minimal
 
-RUN apt-get update && apt-get -y install latexmk
+# Install procps for ps command (used by latexmk -pvc)
+RUN apt-get update && apt-get -y install texlive-latex-base  \
+    texlive-latex-extra latexmk procps
 
 # These ids are the Linux defaults for the first user created
 ARG USER_ID=1000
 ARG GROUP_ID=1000
-RUN groupadd -g ${GROUP_ID} compiler && \
-    useradd -u ${USER_ID} -g ${GROUP_ID} -ms /bin/bash compiler
+RUN groupadd -g ${GROUP_ID} tex && \
+    useradd -u ${USER_ID} -g ${GROUP_ID} -ms /bin/bash tex
 
-WORKDIR /home/compiler/app
+WORKDIR /home/tex/app
 
 RUN mkdir -p target
 
-COPY tp1.tex fiuba.png ./
+COPY src/ ./src
+COPY assets/ ./assets
 
-RUN chown -R compiler:compiler /home/compiler/app/target
+RUN chown -R tex:tex /home/tex/app/target
 
-USER compiler
+USER tex
 
-CMD latexmk -pdf -output-directory=target tp1.tex
+ENTRYPOINT ["latexmk", "-pdf", "-output-directory=target", "src/tp1.tex"]
