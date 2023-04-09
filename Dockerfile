@@ -2,7 +2,7 @@ FROM texlive/texlive:latest-minimal
 
 # Install procps for ps command (used by latexmk -pvc)
 RUN apt-get update && apt-get -y install texlive-latex-base  \
-    texlive-latex-extra latexmk procps
+    texlive-latex-extra texlive-lang-spanish latexmk procps
 
 # These ids are the Linux defaults for the first user created
 ARG USER_ID=1000
@@ -21,4 +21,4 @@ RUN chown -R tex:tex /home/tex/app/target
 
 USER tex
 
-ENTRYPOINT ["latexmk", "-pdf", "-output-directory=target", "src/tp1.tex"]
+ENTRYPOINT ["latexmk", "-pdf", "-cd", "-output-directory=../target", "src/tp1.tex"]
