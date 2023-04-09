@@ -8,7 +8,7 @@ Objective:  Z = 144 (MAXimum)
    No.   Row name   St   Activity     Lower bound   Upper bound    Marginal
 ------ ------------ -- ------------- ------------- ------------- -------------
      1 Z            B            144                             
-     2 unAcadaDosC  B              8            -1               
+     2 unAcadaDosC  B              8            -0               
      3 autobombas   NU            16                          16             5 
      4 helicopteros NU             8                           8             8 
      5 brigadas     B             24                          28 
